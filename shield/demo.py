@@ -41,10 +41,27 @@ def run(use_shield):
     return violations, cost, times, soc_trace
 
 
-v0, c0, _, _ = run(use_shield=False)
-v1, c1, t, _ = run(use_shield=True)
+v0, c0, _, trace0 = run(use_shield=False)
+v1, c1, t, trace1 = run(use_shield=True)
+
 
 print(f"Steps simulated:        {len(df)}")
 print(f"Unshielded violations:  {v0}   cost: Rs {c0:,.0f}")
 print(f"Shielded violations:    {v1}   cost: Rs {c1:,.0f}")
 print(f"Shield latency:         mean {np.mean(t):.4f} ms, max {np.max(t):.4f} ms")
+
+
+import matplotlib.pyplot as plt
+from config import SOC_MIN, SOC_MAX
+
+N = 24 * 7  # first week
+fig, ax = plt.subplots(2, 1, figsize=(10, 6), sharex=True)
+ax[0].plot(trace0[:N]); ax[0].set_title("Unshielded agent: SoC")
+ax[1].plot(trace1[:N]); ax[1].set_title("Shielded agent: SoC")
+for a in ax:
+    a.set_ylim(-0.05, 1.05)
+    a.axhline(SOC_MIN, color="r", ls="--"); a.axhline(SOC_MAX, color="r", ls="--")
+    a.set_ylabel("SoC")
+    
+ax[1].set_xlabel("Hour")
+plt.tight_layout(); plt.savefig("soc_comparison.png", dpi=150); plt.show()
