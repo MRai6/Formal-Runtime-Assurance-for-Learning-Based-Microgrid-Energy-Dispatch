@@ -25,6 +25,9 @@ def run(use_shield):
 
         # count a violation if the action breaks Rule 1 or Rule 2
         if not (rule_soc(soc, p) and rule_power_limit(p)):
+            if use_shield and violations < 3:
+                print("VIOLATION:", soc, p, next_soc(soc, p))
+            
             violations += 1
 
         # backup covers any shortfall; extra solar is curtailed

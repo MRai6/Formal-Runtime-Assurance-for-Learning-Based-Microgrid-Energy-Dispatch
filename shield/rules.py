@@ -33,3 +33,9 @@ if __name__ == "__main__":
     print(rule_power_limit(-20))   # True:  20 <= 50
     print(rule_power_balance(40, 60, 20, 0))   # True:  40 + 20 + 0 = 60
     print(rule_power_balance(40, 60, 0, 0))    # False: only 40 supplied, 60 needed
+
+EPS = 1e-9   # numerical tolerance
+
+def rule_soc(soc, battery_kw):
+    s = next_soc(soc, battery_kw)
+    return SOC_MIN - EPS <= s <= SOC_MAX + EPS
