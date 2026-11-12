@@ -69,8 +69,7 @@ cp .env.example .env
 ```
 Open `.env` and paste the team's shared connection URL:
 ```env
-DATABASE_URL=postgresql://user:password@host:port/dbname
-```
+DATABASE_URL=postgresql://neondb_owner:npg_5EBDek4prbfP@ep-broad-bonus-a1izw4a7-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
 > [!NOTE]
 > Database credentials are never committed to version control. `.env` is ignored by `.gitignore`.
 
