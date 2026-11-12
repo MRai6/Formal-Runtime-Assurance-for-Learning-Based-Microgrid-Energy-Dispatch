@@ -46,3 +46,25 @@ wheels/
 # Operating System files
 .DS_Store
 Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Generated files
+.coverage
+htmlcov/

@@ -1,0 +1,40 @@
+# ==============================================================================
+# Solar Photovoltaic (PV) System Specification
+# Benchmark: Commercial Fixed-Tilt Monocrystalline Rooftop Array
+# ==============================================================================
+pv_id: "pv_commercial_rooftop_120kw"
+technology: "monocrystalline_silicon"
+specification_status: "pending_vendor_selection"
+reference_source: "IEC 60904-3 Standard Test Conditions & Sandia PV Array Performance Model"
+
+# Capacity & Array Sizing
+capacity:
+  rated_dc_capacity_kw: 120.0          # Nameplate DC peak capacity at Standard Test Conditions [kW_dc]
+  dc_to_ac_ratio: 1.0                  # Inverter loading ratio (DC rating / Inverter AC rating) [-]
+
+# Geometry & Orientation (Golden, CO Optimal)
+orientation:
+  tilt_degrees: 39.74                  # Surface tilt angle from horizontal (matched to latitude) [°]
+  azimuth_degrees: 180.0               # Surface azimuth angle (180.0° = Due South) [°]
+  ground_albedo: 0.20                  # Diffuse ground reflectance (standard commercial gravel/roof) [-]
+
+# Standard Test Conditions (STC) & Thermal Performance
+thermal_and_electrical:
+  stc_irradiance_w_per_m2: 1000.0      # Reference solar irradiance at STC [W/m²]
+  stc_cell_temperature_c: 25.0         # Reference cell temperature at STC [°C]
+  noct_temperature_c: 45.0             # Nominal Operating Cell Temperature [°C]
+  temperature_coefficient_pmp_per_c: -0.0038 # Power temperature coefficient (-0.38%/°C) [1/°C]
+  stc_module_efficiency: 0.20          # Nominal module conversion efficiency at STC (20.0%) [-]
+  transmittance_absorptance_product: 0.90 # Optical transmittance-absorptance product (tau*alpha) [-]
+
+# System Losses & Derating
+losses:
+  bos_derate_factor: 0.95              # Balance-of-system factor (5% soiling, wiring, mismatch loss) [-]
+
+# Engineering Notes & Assumptions
+notes:
+  - "Array geometry is optimized for annual energy capture at Golden, CO latitude (39.74°N)."
+  - "Transposition from GHI/DNI/DHI to POA irradiance uses the Liu-Jordan isotropic sky model."
+  - "Cell temperature dynamics follow the King/Evans empirical NOCT thermal formulation."
+  - "Module manufacturer part numbers are pending vendor procurement selection."
+

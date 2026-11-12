@@ -1,0 +1,39 @@
+# ==============================================================================
+# Benchmark Location and Environmental Specification
+# Location: Golden / Denver, Colorado (NREL South Table Mountain Campus)
+# ==============================================================================
+location_id: "golden_denver_cz5b"
+site_name: "NREL South Table Mountain Campus / Denver Benchmark"
+geographic_region: "Mountain West, Front Range Urban Corridor"
+
+# Coordinates & Physical Geography
+coordinates:
+  latitude_deg: 39.7420                # Geographic latitude [°N]
+  longitude_deg: -105.1800             # Geographic longitude [°W]
+  elevation_meters: 1829.0             # Surface elevation above sea level [m]
+  timezone: "America/Denver"           # Local timezone (UTC-7 MST / UTC-6 MDT)
+  utc_offset_hours: -7.0               # Standard time UTC offset [hours]
+
+# Climate Classification
+climate:
+  ashrae_climate_zone: "5B"            # ASHRAE 90.1 Climate Zone: Cold, Semi-Arid
+  koppen_geiger_class: "BSk"           # Köppen: Cold semi-arid climate
+  weather_year: 2018                   # Calibrated historical meteorological year
+
+# Associated Reference Building Archetype
+building_archetype:
+  archetype_id: "comstock_medium_office_cz5b"
+  model_source: "NREL ComStock End-Use Load Profiles (Submission 4520)"
+  building_type: "MediumOffice"
+  floor_area_sqft: 53600.0             # Total conditioned floor area [ft²]
+  floor_area_m2: 4982.0                # Total conditioned floor area [m²]
+  number_of_stories: 3                 # Building height [stories]
+  peak_electrical_demand_kw: 165.4     # Typical historical summer peak electrical demand [kW]
+  average_electrical_demand_kw: 78.2   # Typical annual average electrical demand [kW]
+
+# Engineering Notes & Assumptions
+notes:
+  - "Golden, CO coordinates align precisely with the NREL Solar Radiation Research Laboratory (SRRL)."
+  - "Climate Zone 5B features authentic multi-seasonal challenges: sub-zero winter freeze and summer cooling peaks."
+  - "Building archetype is compliant with ASHRAE Standard 90.1-2004/2007 commercial baseline specifications."
+

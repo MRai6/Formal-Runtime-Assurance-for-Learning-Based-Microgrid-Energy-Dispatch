@@ -1,9 +1,23 @@
-# Core computation & simulation dependencies
-numpy>=1.24.0
-pandas>=2.0.0
-matplotlib>=3.7.0
+# Core computation
+numpy>=2.0.0
+pandas>=2.2.0
+scipy>=1.12.0
+pydantic>=2.6.0
+PyYAML>=6.0.1
+pyarrow>=15.0.0
 
-# Database & environment integration
+# Microgrid simulation
+gymnasium>=1.0.0
+
+# Database integration
 psycopg2-binary>=2.9.0
 python-dotenv>=1.0.0
 
+# Visualization
+matplotlib>=3.7.0
+
+# Development and testing
+pytest>=8.0.0
+pytest-cov>=4.1.0
+ruff>=0.3.0
+mypy>=1.9.0

@@ -1,0 +1,52 @@
+# ==============================================================================
+# Grid Interconnection and Electricity Tariff Specification
+# Utility: Public Service Company of Colorado (PSCo / Xcel Energy)
+# Tariff Schedule: Schedule SG - Secondary General Service (Provisional Economic Benchmark)
+# Regulatory Filing: Colorado P.U.C. No. 8 - Electric, Tariff Sheet No. 43 et seq.
+# OpenEI URDB Utility ID: 15466 / CPUC Advice Letter No. 1923-Electric
+# ==============================================================================
+grid_id: "psco_xcel_commercial_sg"
+utility_name: "Public Service Company of Colorado"
+utility_parent: "Xcel Energy"
+eia_utility_id: 15466
+tariff_schedule: "Schedule SG - Secondary General Service Time-of-Use (Provisional Economic Benchmark)"
+jurisdiction: "Colorado Public Utilities Commission (CPUC)"
+reference_source: "Colorado P.U.C. No. 8 - Electric (Sheet No. 43 et seq.) & OpenEI URDB Rate ID 15466"
+
+# Interconnection Capacity Limits (Point of Common Coupling)
+interconnection:
+  max_import_power_kw: 250.0           # Maximum contractual power import limit from utility grid [kW]
+  max_export_power_kw: 250.0           # Maximum contractual power export limit to utility grid [kW]
+  mutual_exclusivity_required: true   # Simultaneous import and export physically forbidden
+
+# Fixed and Demand Billing Determinants
+billing:
+  monthly_customer_charge_usd: 45.00   # Fixed monthly customer service & facility charge [$/month]
+  distribution_demand_charge_usd_per_kw: 14.25 # Monthly peak demand charge applied to max 15-min kW [$/kW]
+
+# Time-of-Use (TOU) Volumetric Energy Rates ($/kWh)
+tou_rates:
+  summer:
+    months: [6, 7, 8, 9]               # June 1 through September 30
+    on_peak_hours: [13, 14, 15, 16, 17, 18] # 13:00 to 19:00 (1:00 PM - 7:00 PM)
+    on_peak_weekdays_only: true
+    rate_on_peak_usd_per_kwh: 0.1850   # Summer on-peak energy charge [$/kWh]
+    rate_off_peak_usd_per_kwh: 0.0680  # Summer off-peak energy charge [$/kWh]
+  winter:
+    months: [1, 2, 3, 4, 5, 10, 11, 12] # October 1 through May 31
+    on_peak_hours: [13, 14, 15, 16, 17, 18] # 13:00 to 19:00 (1:00 PM - 7:00 PM)
+    on_peak_weekdays_only: true
+    rate_on_peak_usd_per_kwh: 0.1250   # Winter on-peak energy charge [$/kWh]
+    rate_off_peak_usd_per_kwh: 0.0620  # Winter off-peak energy charge [$/kWh]
+
+# Net-Metering / Export Compensation
+export_compensation:
+  compensation_mechanism: "avoided_cost_credit"
+  export_credit_multiplier: 0.50       # Credit equals 50% of the active retail buy rate [dimensionless]
+
+# Engineering Notes & Assumptions
+notes:
+  - "Tariff applies to commercial customers taking three-phase secondary service (480V)."
+  - "Demand charge applies to the maximum 15-minute integrated demand interval in each monthly billing cycle."
+  - "PROVISIONAL BENCHMARK DESIGNATION: This tariff is designated as a provisional economic benchmark reflecting modern Schedule SG-TOU structure. It is not an unverified historical 2018 rate book."
+  - "Holidays observed by PSCo (New Year's, Memorial Day, Independence Day, Labor Day, Thanksgiving, Christmas) are treated as off-peak."

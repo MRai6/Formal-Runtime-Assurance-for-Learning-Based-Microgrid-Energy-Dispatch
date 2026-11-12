@@ -1,0 +1,32 @@
+# ==============================================================================
+# Microgrid Simulation System Specification
+# Formal Runtime Assurance for Learning-Based Microgrid Energy Dispatch
+# ==============================================================================
+system_id: "denver_commercial_microgrid"
+description: "Grid-connected commercial microgrid in Golden/Denver, CO benchmark"
+version: "1.0.0"
+
+# Simulation Temporal Parameters
+temporal:
+  timestep_minutes: 15
+  timestep_hours: 0.25
+  steps_per_day: 96
+  steps_per_year: 35040
+  weather_year: 2018
+  start_date: "2018-01-01T00:00:00"
+  end_date: "2018-12-31T23:45:00"
+
+# Electrical Architecture
+electrical:
+  ac_bus_voltage_v: 480.0          # Three-phase nominal AC bus line-to-line voltage [V]
+  grid_frequency_hz: 60.0          # Nominal grid operating frequency [Hz]
+  power_factor: 1.0                # Active-power dispatch baseline (unity power factor)
+  isothermal_temperature_c: 25.0   # Baseline ambient container temperature [°C]
+
+# Operational Assumptions
+assumptions:
+  - "Simulation operates under a discrete 15-minute primary dispatch interval (Δt = 0.25 h)."
+  - "Point of Common Coupling (PCC) operates at unity power factor (reactive power Q = 0)."
+  - "Battery container ambient environment is temperature-controlled to 25°C isothermal baseline."
+  - "Distribution line losses within microgrid internal AC bus are neglected at tertiary dispatch level."
+

@@ -1,0 +1,45 @@
+# ==============================================================================
+# Battery Energy Storage System (BESS) Specification
+# Benchmark: NREL Annual Technology Baseline (ATB) 2023 Commercial Storage (4-hr)
+# ==============================================================================
+battery_id: "bess_commercial_400kwh"
+technology: "lithium_ion_lifepo4_nmc_benchmark"
+specification_status: "pending_vendor_selection"
+reference_source: "NREL Annual Technology Baseline (ATB) 2023 Commercial Li-ion Storage (4-Hour Duration)"
+
+# Energy Ratings
+capacity:
+  nominal_energy_kwh: 400.0             # Nameplate nominal energy storage capacity [kWh]
+  minimum_soc: 0.15                     # Minimum allowable operational State of Charge (15%) [-]
+  maximum_soc: 0.90                     # Maximum allowable operational State of Charge (90%) [-]
+  initial_soc: 0.50                     # Initial State of Charge at simulation start (50%) [-]
+  usable_energy_kwh: 300.0              # Usable capacity = nominal_energy * (max_soc - min_soc) [kWh]
+
+# Power Ratings & Thermal Domain
+power_and_thermal:
+  max_charge_power_kw: 100.0           # Maximum continuous charging power rating (0.25 C-rate) [kW]
+  max_discharge_power_kw: 100.0        # Maximum continuous discharging power rating (0.25 C-rate) [kW]
+  nominal_cell_temperature_c: 25.0     # Baseline operating cell temperature [°C]
+  thermal_domain: "isothermal"         # Configurable baseline: isothermal container at 25°C
+
+# Efficiencies & Self-Discharge
+performance:
+  charging_efficiency: 0.95            # One-way internal battery charging efficiency [-]
+  discharging_efficiency: 0.95         # One-way internal battery discharging efficiency [-]
+  roundtrip_efficiency: 0.9025         # Implied DC-DC round-trip efficiency (eta_ch * eta_dis) [-]
+  self_discharge_rate_per_hour: 0.00001 # Self-discharge rate (1.0e-5 h^-1, ~0.72% per month) [1/h]
+
+# Degradation & Economic Amortization
+degradation:
+  replacement_cost_usd_per_kwh: 180.0  # Cell/pack replacement capital cost [$/kWh]
+  cycle_life_to_eol: 4000              # Rated equivalent full cycles to End-of-Life (80% capacity retention)
+  reference_dod: 0.80                  # Reference depth of discharge for cycle rating [-]
+  implied_wear_cost_usd_per_kwh: 0.028125 # Implied wear cost per kWh cycled [$/kWh]
+
+# Engineering Notes & Assumptions
+notes:
+  - "Hardware parameters correspond to standard NREL ATB 4-hour commercial storage benchmarks."
+  - "Actual cell manufacturer part number is pending procurement selection."
+  - "Charging and discharging are mutually exclusive (P_ch * P_dis = 0)."
+  - "Dynamic state-dependent power limits are enforced at every step to prevent non-physical SoC overshoot."
+

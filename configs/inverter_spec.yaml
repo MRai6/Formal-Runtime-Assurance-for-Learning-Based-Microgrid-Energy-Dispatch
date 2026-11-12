@@ -1,0 +1,35 @@
+# ==============================================================================
+# Power Conversion System (Inverter) Specification
+# Benchmark: Commercial Three-Phase String Inverter (IEEE 1547 / CEC Model)
+# ==============================================================================
+inverter_id: "inverter_commercial_120kw"
+technology: "three_phase_transformerless_string_inverter"
+specification_status: "pending_vendor_selection"
+reference_source: "California Energy Commission (CEC) Inverter Performance Testing & IEEE Std 1547-2018"
+
+# Ratings & Operational Limits
+ratings:
+  rated_ac_power_kw: 120.0             # Continuous nameplate AC power capacity [kW_ac]
+  rated_apparent_power_kva: 120.0      # Apparent power capacity at unity power factor [kVA]
+  max_dc_input_power_kw: 150.0         # Maximum allowable DC input power prior to clipping [kW_dc]
+  operating_power_factor: 1.0          # Operating power factor (active power dispatch baseline) [-]
+
+# Non-Linear Efficiency Curve (CEC Polynomial Formulation)
+# eta(p_pu) = eta_nom * [1 - c0 - c1 * (p_pu - 1)^2]
+efficiency_model:
+  model_type: "cec_polynomial"
+  nominal_peak_efficiency: 0.975       # Peak conversion efficiency (97.5%) [-]
+  curvature_coefficient_c0: 0.015      # Intercept loss coefficient [-]
+  curvature_coefficient_c1: 0.035      # Quadratic curvature coefficient [-]
+
+# Bidirectional Battery Inverter (PCC Interconnection)
+battery_inverter:
+  rated_ac_power_kw: 100.0             # Continuous AC rating for battery bidirectional inverter [kW_ac]
+  bidirectional_efficiency: 0.96       # AC-to-DC (charging) and DC-to-AC (discharging) efficiency [-]
+
+# Engineering Notes & Assumptions
+notes:
+  - "DC power exceeding inverter nameplate AC capacity is clipped to rated_ac_power_kw."
+  - "Inverter operates at unity power factor with zero reactive power (Q = 0) in Phase 2 baseline."
+  - "Standby power consumption and nighttime tare losses are neglected at tertiary dispatch level."
+
