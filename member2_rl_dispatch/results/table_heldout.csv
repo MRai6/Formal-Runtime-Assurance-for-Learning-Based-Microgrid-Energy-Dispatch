@@ -1,0 +1,4 @@
+Method,Cost (INR),Saving vs rule-based,Interventions (rate),Solar used (kWh)
+Rule-based,10682,-,0.33,998
+SAC + CF loop (seed 0),9977,6.6%,0.39,1078
+"Demo-SAC (mean ± std, 3 seeds)",9938 ± 34,7.0% ± 0.3,0.26 ± 0.06,1081
