@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+body {
+  background-color: #fbf9f6;
+  color: #2c2724;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(at 10% 10%, rgba(232, 210, 181, 0.45) 0px, transparent 55%),
+    radial-gradient(at 90% 15%, rgba(165, 167, 155, 0.3) 0px, transparent 50%),
+    radial-gradient(at 50% 85%, rgba(89, 9, 7, 0.06) 0px, transparent 65%),
+    radial-gradient(at 80% 85%, rgba(232, 210, 181, 0.35) 0px, transparent 50%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 16px 36px rgba(89, 9, 7, 0.04);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(16px) saturate(135%);
+  -webkit-backdrop-filter: blur(16px) saturate(135%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 10px 28px rgba(89, 9, 7, 0.035);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.glass-card:hover {
+  box-shadow: 0 16px 36px rgba(89, 9, 7, 0.07);
+}
+
+.glass-card-subtle {
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(232, 210, 181, 0.4);
+}
+
+.glass-burgundy {
+  background: linear-gradient(135deg, rgba(89, 9, 7, 0.94) 0%, rgba(57, 4, 3, 0.98) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(232, 210, 181, 0.25);
+  box-shadow: 0 16px 40px rgba(89, 9, 7, 0.22);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(165, 167, 155, 0.4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(89, 9, 7, 0.5);
+}
+
+/* Animated Flow Lines for Energy Graph */
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.animate-dash-flow {
+  animation: dash-flow 1.2s linear infinite;
+}

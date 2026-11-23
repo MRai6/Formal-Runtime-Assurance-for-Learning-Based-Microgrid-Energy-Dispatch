@@ -80,6 +80,23 @@ python shield/demo.py
 * The pipeline automatically checks database connectivity. If the database is reachable, every step streams to the `action_audit_log` table.
 * If the database is unreachable, the system automatically falls back to offline simulation with a graceful warning—**the simulation never crashes**.
 
+### Step 5 — Launch Web Application & 60 FPS Dashboard
+```bash
+# Windows One-Click:
+run_dashboard.bat
+
+# Or via Python:
+python -m uvicorn server.main:app --host 0.0.0.0 --port 8000
+```
+Open **`http://localhost:8000`** in any browser to access the interactive AURA-Grid Glassmorphism Dashboard:
+- **Overview Dashboard:** 24h baseline dispatch and 4-panel energy preservation charts.
+- **Interactive Energy Flow:** Real-time SVG nodal power balance visualizer.
+- **Solar & Battery Analytics:** Dynamic State of Charge gauge and historical trajectories.
+- **AI Dispatch (SAC):** Deep reinforcement learning vs heuristic rule-based comparisons.
+- **Runtime Safety Shield:** Real-time "What-If" sandbox with sub-microsecond safe convex projection.
+- **Telemetry Browser:** Live TimescaleDB `action_audit_log` streaming with search and CSV export.
+- **API Documentation:** Interactive Swagger OpenAPI docs at `http://localhost:8000/docs`.
+
 ---
 
 ## 4. Database Architecture (PostgreSQL & TimescaleDB)

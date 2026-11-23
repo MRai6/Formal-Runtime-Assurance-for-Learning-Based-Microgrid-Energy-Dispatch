@@ -68,3 +68,12 @@ env/
 # Generated files
 .coverage
 htmlcov/
+
+# Node / Frontend dependencies
+node_modules/
+**/node_modules/
+.npm/
+
+# Allow built frontend production assets to be served by FastAPI out of the box
+!frontend/dist/
+!frontend/dist/**
